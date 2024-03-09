@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Estudiantes</title>
+</head>
+<body>
+    <h1>Listado de Estudiantes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Carnet</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo Electrónico</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for estudiante in estudiantes %}
+            <tr>
+                <td>{{ estudiante.carnet }}</td>
+                <td>{{ estudiante.nombres }}</td>
+                <td>{{ estudiante.apellidos }}</td>
+                <td>{{ estudiante.correo_electronico }}</td>
+                <td>{{ estudiante.fecha_nacimiento }}</td>
+                <td>
+                    <a href="{% url 'editar_estudiante' estudiante.id %}">Editar</a>
+                    <a href="{% url 'eliminar_estudiante' estudiante.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'crear_estudiante' %}">Nuevo Estudiante</a>
+</body>
+</html>
